@@ -148,6 +148,28 @@
   .contact-links a:hover{color:var(--accent)}
   .copyright{margin-top:56px;padding-top:24px;border-top:1px solid var(--hair);font-size:12.5px;color:oklch(0.55 0.02 60)}
 
+  /* expandable project detail */
+  .more{margin-top:12px}
+  .more summary{display:inline-flex;align-items:center;gap:7px;cursor:pointer;list-style:none;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent);transition:opacity .2s}
+  .more summary::-webkit-details-marker{display:none}
+  .more summary::before{content:"+";font-size:14px;line-height:1}
+  .more[open] summary::before{content:"–"}
+  .more summary:hover{opacity:.65}
+  .more p{font-size:14.5px;line-height:1.6;color:var(--body);margin-top:10px;max-width:54ch;border-left:2px solid var(--hair);padding-left:14px}
+
+  /* LinkedIn / connect popup */
+  .modal{position:fixed;inset:0;z-index:200;display:flex;align-items:center;justify-content:center;opacity:0;pointer-events:none;transition:opacity .25s ease}
+  .modal:target{opacity:1;pointer-events:auto}
+  .modal .ov{position:absolute;inset:0;background:oklch(0.25 0.02 60 / 0.45);backdrop-filter:blur(2px)}
+  .modal .box{position:relative;background:var(--paper);border:1px solid var(--hair);border-radius:20px;padding:40px 38px;max-width:430px;width:calc(100% - 40px);box-shadow:0 24px 70px oklch(0.25 0.02 60 / 0.3);transform:translateY(14px) scale(.98);transition:transform .25s ease}
+  .modal:target .box{transform:none}
+  .modal .box .label{margin-bottom:12px}
+  .modal .box h3{font-family:'Newsreader',serif;font-weight:500;font-size:28px;letter-spacing:-0.01em;color:var(--ink)}
+  .modal .box p{font-size:15px;line-height:1.55;color:var(--body);margin-top:12px}
+  .modal .box .m-cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
+  .modal .close{position:absolute;top:16px;right:18px;font-size:22px;line-height:1;color:var(--muted);text-decoration:none}
+  .modal .close:hover{color:var(--ink)}
+
   /* responsive */
   @media(max-width:860px){
     .hero{grid-template-columns:1fr;gap:26px}
@@ -175,7 +197,7 @@
     <a href="#about">About</a>
     <a href="#experience">Experience</a>
     <a href="#work" class="active">Work</a>
-    <a href="mailto:tanshiarora121@gmail.com" class="contact-link">Contact</a>
+    <a href="#connect" class="contact-link">Connect</a>
   </div>
 </div></nav>
 
@@ -273,13 +295,18 @@
       </div>
     </div>
 
-    <div class="fnp">
-      <div>
+    <div class="emb">
+      <div class="emb-head">
         <h3>Ferns N Petals</h3>
-        <div class="rd">JAN — FEB 2023</div>
-        <div class="rm">Internship · Ops Management Trainee</div>
+        <div class="emb-badge">INTERNSHIP · JAN — FEB 2023</div>
       </div>
-      <p>Analyzed 1,000+ order escalations at a leading D2C gifting brand; 2 process fixes cut repeat complaints 12%. Recognised Top 5 Performer.</p>
+      <div class="emb-sub">Gurugram, India · leading D2C gifting brand</div>
+      <div class="roles">
+        <div class="role">
+          <div><div class="rt">Operations Management Trainee</div><div class="rd">JAN — FEB 2023</div></div>
+          <p>Analyzed 1,000+ order escalations; 2 process fixes cut repeat complaints 12%. Recognised Top 5 Performer.</p>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -299,6 +326,7 @@
         <h3>Triam</h3>
         <div class="sub">AI accounting platform (Zeinitho)</div>
         <p class="desc">Led feasibility, cost modelling, a phased roadmap and commercial restructuring. Grew a ₹3L discovery into a ₹5Cr engagement (₹2Cr realized), delivering Phase 1 ahead of schedule at 10/10 CSAT. The client now refers new business.</p>
+        <details class="more"><summary>What I did</summary><p>Owned it end to end — feasibility study, AWS cost model, a three-phase commercial roadmap, the repitch, and six months of delivery leadership. Turned a tiny discovery into a multi-crore, multi-year account.</p></details>
       </div>
     </div>
     <div class="proj">
@@ -311,6 +339,7 @@
         <h3>Honda</h3>
         <div class="sub">AI adoption + buyer research</div>
         <p class="desc">Led Honda's move into AI — ran the entire India-market buyer research across metro and tier-2 segments for a live AI deployment.</p>
+        <details class="more"><summary>What I did</summary><p>Built buyer personas across metro and tier-2 segments, mapped the AI use-case, and modelled the production AWS cost (₹1Cr+/yr) to make the business case for a live deployment.</p></details>
       </div>
     </div>
     <div class="proj">
@@ -323,6 +352,7 @@
         <h3>Zee Stores</h3>
         <div class="sub">Retail &amp; distribution platform</div>
         <p class="desc">Delivered the digital platform for an IHC-owned wholesale and distribution enterprise in Abu Dhabi — spanning 5 warehouses and MENA-wide supply.</p>
+        <details class="more"><summary>What I did</summary><p>Scoped requirements, coordinated vendors and drove the rollout for an IHC-group distributor running 5 warehouses and a refrigerated fleet across the MENA region.</p></details>
       </div>
     </div>
     <div class="proj">
@@ -335,6 +365,7 @@
         <h3>Naturis</h3>
         <div class="sub">B2B sampling platform</div>
         <p class="desc">Specced and prototyped a sampling platform for a cosmetics manufacturer: requirement intake, lab routing, SLA tracking, dispatch, stability workflows, RBAC and audit trails. Owned start to finish.</p>
+        <details class="more"><summary>What I did</summary><p>6 roles, 31 screens — requirement intake → lab routing → SLA tracking → dispatch → stability, with RBAC, ownership transfer and full audit trails. Delivered the PRD and an interactive prototype solo.</p></details>
       </div>
     </div>
     <div class="proj">
@@ -347,6 +378,7 @@
         <h3>Jebni</h3>
         <div class="sub">Services marketplace</div>
         <p class="desc">Built a 200+ user-story product charter and multi-version SRS; ran contracts, stakeholder analysis, resourcing and design-vendor management. Expanded the engagement 4.6×.</p>
+        <details class="more"><summary>What I did</summary><p>200+ user stories, SRS v1–v4, SOW and MENA contracts, stakeholder analysis, priority-wise resourcing and design-vendor management — grew the engagement ₹30L → ₹1.4Cr.</p></details>
       </div>
     </div>
     <div class="proj">
@@ -359,6 +391,7 @@
         <h3>PGTI</h3>
         <div class="sub">Professional Golf Tour of India</div>
         <p class="desc">Delivered the digital platform for India's professional golf tour, launching shortly.</p>
+        <details class="more"><summary>What I did</summary><p>Delivering the web platform for the Professional Golf Tour of India end to end — design, build coordination and launch, going live shortly.</p></details>
       </div>
     </div>
     <div class="also">
@@ -408,5 +441,19 @@
   </div>
 
 </main>
+
+<div class="modal" id="connect">
+  <a class="ov" href="#top" aria-label="Close"></a>
+  <div class="box">
+    <a class="close" href="#top" aria-label="Close">×</a>
+    <div class="label">Let's connect</div>
+    <h3>Open to the right role.</h3>
+    <p>Business / Delivery Operator, Category Manager, Founder's Office and Operations roles. Based in Gurugram, open to relocation.</p>
+    <div class="m-cta">
+      <a class="btn btn-fill" href="https://linkedin.com/in/tanshi-arora" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="btn btn-out" href="mailto:tanshiarora121@gmail.com">Email</a>
+    </div>
+  </div>
+</div>
 </body>
 </html>
