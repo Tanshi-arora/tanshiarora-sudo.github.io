@@ -40,8 +40,17 @@
 
   /* hero */
   .hero{display:grid;grid-template-columns:1.05fr 0.95fr;gap:40px;align-items:center;padding:80px 0 56px}
-  .avail{display:flex;align-items:center;gap:11px;font-family:'JetBrains Mono',monospace;font-weight:500;font-size:12px;line-height:1;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:34px}
-  .avail .dot{width:8px;height:8px;border-radius:50%;background:var(--accent)}
+  .avail{display:inline-flex;align-items:center;gap:10px;font-family:'JetBrains Mono',monospace;font-weight:500;font-size:12px;line-height:1;color:var(--accent);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:34px;padding:9px 16px;border:1px solid var(--hair);border-radius:999px;background:oklch(0.99 0.008 80)}
+  .avail .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);animation:availpulse 2.4s ease-in-out infinite}
+  @keyframes availpulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.82)}}
+  /* hero entrance */
+  .hero .avail{animation:rise .7s ease both .05s}
+  .hero-title{animation:rise .8s ease both .16s}
+  .hero .lede{animation:rise .8s ease both .3s}
+  .hero .cta-row{animation:rise .85s ease both .42s}
+  .hero-art{animation:rise .9s ease both .52s}
+  @keyframes rise{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+  @media(prefers-reduced-motion:reduce){.hero .avail,.hero-title,.hero .lede,.hero .cta-row,.hero-art{animation:none!important}.avail .dot{animation:none}}
   .hero-title{font-family:'Newsreader',serif;font-weight:500;font-size:clamp(40px,8vw,74px);line-height:1.02;letter-spacing:-0.025em;max-width:15ch;color:var(--ink)}
   .lede{margin-top:30px;font-size:18.5px;line-height:1.6;color:var(--body);max-width:62ch}
   .lede strong{color:var(--ink);font-weight:600}
@@ -116,11 +125,10 @@
   .also strong{color:oklch(0.32 0.02 60);font-weight:600}
 
   /* industries */
-  .tags{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
-  .tags span{display:inline-flex;align-items:center;gap:9px;padding:11px 20px;border:1px solid var(--hair);border-radius:999px;font-size:14px;color:oklch(0.35 0.02 60);background:oklch(0.99 0.008 80);box-shadow:0 1px 2px oklch(0.575 0.13 38 / 0.04);transition:.22s ease}
-  .tags span::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent);opacity:.55;transition:.22s ease}
-  .tags span:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px);box-shadow:0 6px 18px oklch(0.575 0.13 38 / 0.10)}
-  .tags span:hover::before{opacity:1}
+  .ind-list{margin-top:30px;font-family:'Newsreader',serif;font-weight:500;font-size:clamp(23px,2.9vw,33px);line-height:1.5;letter-spacing:-0.01em;color:var(--ink);max-width:1000px}
+  .ind-list .it{transition:color .2s ease;cursor:default}
+  .ind-list .it:hover{color:var(--accent)}
+  .ind-list .sep{color:var(--accent);margin:0 .42em;font-weight:400}
 
   /* contact */
   .contact{margin-top:96px;background:var(--footer);border-top:1px solid var(--hair)}
@@ -308,13 +316,13 @@
     <div class="proj">
       <div>
         <div class="sector">Automotive</div>
-        <div class="metric">₹80L</div>
+        <div class="metric">₹1Cr+</div>
         <div class="region">India market</div>
       </div>
       <div>
         <h3>Honda</h3>
         <div class="sub">AI adoption + buyer research</div>
-        <p class="desc">Led Honda's move into AI — ran the entire India-market buyer research across metro and tier-2 segments and modelled the production AI infrastructure commercials (₹1Cr+/yr) for a live workload.</p>
+        <p class="desc">Led Honda's move into AI — ran the entire India-market buyer research across metro and tier-2 segments for a live AI deployment.</p>
       </div>
     </div>
     <div class="proj">
@@ -374,10 +382,8 @@
   <section class="wrap section">
     <div class="label">Industries</div>
     <h2 class="sec" style="margin-top:16px">Eleven industries, one operator.</h2>
-    <div class="tags">
-      <span>AI &amp; SaaS</span><span>Cosmetics &amp; beauty</span><span>Automotive</span><span>Fintech</span>
-      <span>Edtech</span><span>FMCG distribution</span><span>D2C &amp; e-commerce</span><span>Marketplaces</span>
-      <span>Aviation</span><span>F&amp;B</span><span>Manufacturing</span>
+    <div class="ind-list">
+      <span class="it">AI &amp; SaaS</span><span class="sep">/</span><span class="it">Cosmetics &amp; beauty</span><span class="sep">/</span><span class="it">Automotive</span><span class="sep">/</span><span class="it">Fintech</span><span class="sep">/</span><span class="it">Edtech</span><span class="sep">/</span><span class="it">FMCG distribution</span><span class="sep">/</span><span class="it">D2C &amp; e-commerce</span><span class="sep">/</span><span class="it">Marketplaces</span><span class="sep">/</span><span class="it">Aviation</span><span class="sep">/</span><span class="it">F&amp;B</span><span class="sep">/</span><span class="it">Manufacturing</span>
     </div>
   </section>
 
