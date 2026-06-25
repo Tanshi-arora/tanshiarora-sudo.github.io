@@ -7,25 +7,36 @@
 <meta name="description" content="Tanshi Arora — Business & Delivery Operator. 3 years owning client outcomes end to end: products, revenue, operations, vendors. ₹10Cr+ business influenced, 30+ products shipped.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --bg:#f6f3ee; --surface:#fffdf9; --ink:#1c1a17; --muted:#6b6459;
-    --line:#e6dfd3; --accent:#c2410c; --accent-soft:#fbe9df;
-    --accent-ink:#7c2d12; --shadow:0 1px 2px rgba(28,26,23,.04),0 8px 30px rgba(28,26,23,.06);
+    --line:#e6dfd3; --accent:#1c1a17; --accent-soft:#ece8e1;
+    --accent-ink:#1c1a17; --shadow:0 1px 2px rgba(28,26,23,.04),0 8px 30px rgba(28,26,23,.06);
   }
   html[data-theme="dark"]{
     --bg:#0c0b0a; --surface:#16140f; --ink:#f2efe9; --muted:#9a948a;
-    --line:#2b2823; --accent:#f5a623; --accent-soft:#2a1f08; --accent-ink:#ffd591;
+    --line:#2b2823; --accent:#ffffff; --accent-soft:#201d18; --accent-ink:#ffffff;
     --shadow:0 1px 2px rgba(0,0,0,.5),0 14px 44px rgba(0,0,0,.6);
   }
   *{box-sizing:border-box;margin:0;padding:0}
-  html{scroll-behavior:smooth}
+  html{scroll-behavior:smooth;background:var(--bg);transition:background .3s}
   body{
     font-family:'Inter',-apple-system,system-ui,sans-serif;
-    background:var(--bg); color:var(--ink); line-height:1.6;
-    -webkit-font-smoothing:antialiased; transition:background .3s,color .3s;
+    background:transparent; color:var(--ink); line-height:1.6;
+    -webkit-font-smoothing:antialiased; transition:color .3s;
   }
+  /* animated background blobs */
+  .bg-blobs{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+  .bg-blobs span{position:absolute;width:48vw;height:48vw;border-radius:50%;filter:blur(95px);opacity:.5;will-change:transform}
+  html[data-theme="light"] .bg-blobs span{opacity:.3}
+  .bg-blobs span:nth-child(1){background:#f5a623;top:-10%;left:-8%;animation:drift1 28s ease-in-out infinite alternate}
+  .bg-blobs span:nth-child(2){background:#ff4d8d;top:28%;right:-12%;animation:drift2 34s ease-in-out infinite alternate}
+  .bg-blobs span:nth-child(3){background:#9b6bff;bottom:-14%;left:22%;animation:drift3 31s ease-in-out infinite alternate}
+  @keyframes drift1{0%{transform:translate(0,0) scale(1)}100%{transform:translate(46vw,34vh) scale(1.25)}}
+  @keyframes drift2{0%{transform:translate(0,0) scale(1)}100%{transform:translate(-40vw,28vh) scale(.85)}}
+  @keyframes drift3{0%{transform:translate(0,0) scale(1)}100%{transform:translate(26vw,-32vh) scale(1.2)}}
+  @media(prefers-reduced-motion:reduce){.bg-blobs span{animation:none}}
   .wrap{max-width:1280px;margin:0 auto;padding:0 40px}
   h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:500;line-height:1.1;letter-spacing:-.01em}
   a{color:inherit}
@@ -35,7 +46,7 @@
   nav{position:sticky;top:0;z-index:50;backdrop-filter:blur(12px);
     background:color-mix(in srgb,var(--bg) 82%,transparent);border-bottom:1px solid var(--line)}
   .nav-in{display:flex;align-items:center;justify-content:space-between;height:62px}
-  .brand{font-family:'Fraunces',serif;font-size:28px;font-weight:700;letter-spacing:-.02em;color:var(--accent)}
+  .brand{font-family:'Fraunces',serif;font-size:31px;font-weight:700;letter-spacing:-.02em;color:var(--ink)}
   .brand .dot{color:var(--accent)}
   .nav-links{display:flex;gap:26px;align-items:center}
   .nav-links a{font-size:14px;color:var(--muted);text-decoration:none;transition:color .2s}
@@ -58,7 +69,7 @@
   .btn{display:inline-flex;align-items:center;gap:9px;padding:13px 22px;border-radius:11px;
     font-size:15px;font-weight:600;text-decoration:none;transition:.2s;border:1px solid transparent}
   .btn.primary{background:var(--accent);color:#fff}
-  html[data-theme="dark"] .btn.primary{color:#2a1a02}
+  html[data-theme="dark"] .btn.primary{color:#0c0b0a}
   .btn.primary:hover{transform:translateY(-2px);box-shadow:var(--shadow)}
   .btn.ghost{border-color:var(--line);color:var(--ink)}
   .btn.ghost:hover{border-color:var(--accent);color:var(--accent)}
@@ -135,15 +146,7 @@
   .metric:hover{background:var(--accent-soft)}
   .btn.primary:hover{box-shadow:0 10px 32px color-mix(in srgb,var(--accent) 42%,transparent)}
   .nav-links a:not(.cta):hover{color:var(--accent)}
-  /* hero glow */
-  header{position:relative;overflow:hidden}
   header>.wrap{position:relative;z-index:1}
-  header::before{content:"";position:absolute;top:-150px;left:-110px;width:520px;height:520px;border-radius:50%;
-    background:radial-gradient(circle, color-mix(in srgb,var(--accent) 28%,transparent), transparent 70%);
-    filter:blur(20px);pointer-events:none;z-index:0;opacity:0}
-  html[data-theme="dark"] header::before{opacity:.6}
-  html[data-theme="dark"] header::after{content:"";position:absolute;bottom:-220px;right:-150px;width:560px;height:560px;border-radius:50%;
-    background:radial-gradient(circle, color-mix(in srgb,#ff7a3c 18%,transparent), transparent 70%);filter:blur(34px);pointer-events:none;z-index:0}
   /* scroll reveal */
   .reveal{transition:opacity .7s ease, transform .8s cubic-bezier(.2,.7,.2,1)}
   html.anim .reveal{opacity:0;transform:translateY(28px)}
@@ -152,10 +155,10 @@
 </style>
 </head>
 <body>
+<div class="bg-blobs"><span></span><span></span><span></span></div>
 <nav><div class="wrap nav-in">
   <span class="brand">Tanshi Arora<span class="dot">.</span></span>
   <div class="nav-links">
-    <a href="#impact">Impact</a>
     <a href="#about">About</a>
     <a href="#experience">Experience</a>
     <a href="#work">Projects</a>
@@ -285,7 +288,7 @@
       <div><h3>PGTI — Professional Golf Tour of India</h3><p>Delivered the <span class="out">digital platform for India's professional golf tour</span>, launching shortly.</p></div>
     </div>
 
-    <p class="prose" style="margin-top:26px;font-size:15px">Also delivered for <strong>Al Seer</strong> (FMCG analytics, MENA), <strong>Utkarsh Classes</strong> (edtech, 27M+ downloads), <strong>MG Motors, Vardhaman, MKU, Bankcard, Chimes Aviation, Blue Tokai</strong> and <strong>Ferns N Petals</strong> across delivery, operations and commercials.</p>
+    <p class="prose" style="margin-top:26px;font-size:15px">Also delivered for <strong>Al Seer</strong> (FMCG analytics, MENA), <strong>Utkarsh Classes</strong> (edtech, 27M+ downloads), <strong>MG Motors, Vardhaman, MKU, Bankcard, Chimes Aviation, Blue Tokai</strong> across delivery, operations and commercials.</p>
   </div>
 </section>
 
