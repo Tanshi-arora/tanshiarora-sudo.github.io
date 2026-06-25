@@ -25,11 +25,11 @@
   ::selection{background:oklch(0.575 0.13 38 / 0.22)}
   body{background:var(--paper);color:var(--body);font-family:'Hanken Grotesk',sans-serif;-webkit-font-smoothing:antialiased;line-height:1.6;min-height:100vh}
   a{color:inherit}
-  .wrap{max-width:1100px;margin:0 auto;padding:0 56px}
+  .wrap{max-width:1320px;margin:0 auto;padding:0 56px}
 
   /* nav */
   nav{position:sticky;top:0;z-index:50;background:oklch(0.975 0.012 75 / 0.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--hair-nav)}
-  .nav-in{display:flex;justify-content:space-between;align-items:center;max-width:1100px;margin:0 auto;padding:20px 56px}
+  .nav-in{display:flex;justify-content:space-between;align-items:center;max-width:1320px;margin:0 auto;padding:20px 56px}
   .brand{font-family:'Newsreader',serif;font-size:26px;font-weight:600;letter-spacing:-0.015em;color:var(--accent);text-decoration:none}
   .nav-links{display:flex;gap:30px;align-items:center;font-size:14px;color:oklch(0.45 0.02 60)}
   .nav-links a{color:inherit;text-decoration:none;transition:color .2s}
@@ -53,17 +53,28 @@
   .btn-out{border:1px solid var(--btn-out);color:oklch(0.35 0.02 60)}
   .btn-out:hover{border-color:var(--accent);color:var(--accent)}
 
-  /* hero animated gradient circles */
+  /* hero growth-trajectory animation */
   .hero-art{display:flex;align-items:center;justify-content:center}
-  .orb-wrap{position:relative;width:100%;max-width:440px;aspect-ratio:1/1}
-  .orb{position:absolute;border-radius:50%;filter:blur(6px);will-change:transform}
-  .orb1{top:1%;left:0;width:66%;height:66%;background:radial-gradient(circle at 34% 30%, oklch(0.76 0.10 48), oklch(0.60 0.14 36));opacity:.72;animation:float1 17s ease-in-out infinite}
-  .orb2{bottom:2%;right:1%;width:52%;height:52%;background:radial-gradient(circle at 62% 38%, oklch(0.84 0.07 62), oklch(0.66 0.12 42));opacity:.66;animation:float2 14s ease-in-out infinite}
-  .orb3{top:31%;right:19%;width:34%;height:34%;background:radial-gradient(circle at 50% 45%, oklch(0.82 0.08 52), oklch(0.70 0.12 38));opacity:.5;animation:float3 21s ease-in-out infinite}
-  @keyframes float1{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(16px,-24px) scale(1.07)}}
-  @keyframes float2{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(-20px,16px) scale(1.09)}}
-  @keyframes float3{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(12px,20px) scale(0.93)}}
-  @media(prefers-reduced-motion:reduce){.orb{animation:none}}
+  .chart{width:100%;max-width:480px;height:auto;overflow:visible}
+  .chart .grid line{stroke:var(--hair);stroke-width:1}
+  .chart .axis{stroke:oklch(0.82 0.02 70);stroke-width:1.2}
+  .chart .area{fill:url(#cg);opacity:0;animation:areaIn 1.4s ease forwards 2.3s}
+  .chart .line{fill:none;stroke:var(--accent);stroke-width:2.6;stroke-linecap:round;stroke-dasharray:1000;stroke-dashoffset:1000;animation:draw 2.4s cubic-bezier(.4,.1,.2,1) forwards .35s}
+  .chart .node{fill:var(--paper);stroke:var(--accent);stroke-width:2.4;opacity:0;animation:nodeIn .45s ease forwards}
+  .chart .node.n1{animation-delay:.55s}
+  .chart .node.n2{animation-delay:1.45s}
+  .chart .tip{fill:var(--accent);opacity:0;animation:nodeIn .5s ease forwards 2.5s}
+  .chart .tip-ring{fill:none;stroke:var(--accent);stroke-width:2;animation:ring 2.6s ease-out infinite 2.9s}
+  .chart .lbl{font-family:'JetBrains Mono',monospace;font-size:15px;font-weight:500;fill:var(--muted)}
+  .chart .lbl.hi{fill:var(--accent);font-size:17px}
+  .chart .cap{font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;fill:var(--muted);letter-spacing:.12em}
+  .chart-g{animation:floaty 9s ease-in-out infinite}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  @keyframes areaIn{to{opacity:1}}
+  @keyframes nodeIn{to{opacity:1}}
+  @keyframes ring{0%{r:6;opacity:.55}100%{r:28;opacity:0}}
+  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+  @media(prefers-reduced-motion:reduce){.chart *{animation:none!important;stroke-dashoffset:0!important;opacity:1!important}}
 
   /* stats */
   .stats{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--hair);border-left:1px solid var(--hair)}
@@ -121,7 +132,7 @@
 
   /* contact */
   .contact{margin-top:96px;background:var(--footer);border-top:1px solid var(--hair)}
-  .contact .inner{max-width:1100px;margin:0 auto;padding:84px 56px 48px}
+  .contact .inner{max-width:1320px;margin:0 auto;padding:84px 56px 48px}
   h2.contact-h{font-family:'Newsreader',serif;font-weight:500;font-size:clamp(38px,6vw,54px);letter-spacing:-0.02em;margin-top:16px;color:var(--ink)}
   .contact .lead{font-size:17px;color:oklch(0.45 0.02 60);margin-top:18px;max-width:54ch;line-height:1.55}
   .contact-links{display:flex;flex-wrap:wrap;gap:26px;margin-top:34px;font-family:'JetBrains Mono',monospace;font-weight:500;font-size:14px;line-height:1;color:oklch(0.38 0.02 60)}
@@ -133,7 +144,7 @@
   @media(max-width:860px){
     .hero{grid-template-columns:1fr;gap:26px}
     .hero-art{order:-1;margin:0 auto}
-    .orb-wrap{max-width:280px}
+    .chart{max-width:340px}
   }
   @media(max-width:760px){
     .wrap,.nav-in,.contact .inner{padding-left:24px;padding-right:24px}
@@ -175,11 +186,32 @@
       </div>
     </div>
     <div class="hero-art">
-      <div class="orb-wrap">
-        <div class="orb orb1"></div>
-        <div class="orb orb2"></div>
-        <div class="orb orb3"></div>
-      </div>
+      <svg class="chart" viewBox="0 0 460 380" role="img" aria-label="Flagship account growth from ₹3 lakh to ₹5 crore">
+        <defs>
+          <linearGradient id="cg" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="var(--accent)" stop-opacity="0.2"/>
+            <stop offset="100%" stop-color="var(--accent)" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <g class="chart-g">
+          <g class="grid">
+            <line x1="50" y1="120" x2="410" y2="120"/>
+            <line x1="50" y1="185" x2="410" y2="185"/>
+            <line x1="50" y1="250" x2="410" y2="250"/>
+          </g>
+          <line class="axis" x1="50" y1="58" x2="50" y2="320"/>
+          <line class="axis" x1="50" y1="320" x2="410" y2="320"/>
+          <text class="cap" x="50" y="40">FLAGSHIP GROWTH</text>
+          <path class="area" d="M50 300 C 140 296, 165 250, 225 212 S 350 140, 410 80 L410 320 L50 320 Z"/>
+          <path class="line" d="M50 300 C 140 296, 165 250, 225 212 S 350 140, 410 80"/>
+          <circle class="node n1" cx="50" cy="300" r="5"/>
+          <circle class="node n2" cx="225" cy="212" r="5"/>
+          <circle class="tip" cx="410" cy="80" r="6"/>
+          <circle class="tip-ring" cx="410" cy="80" r="6"/>
+          <text class="lbl" x="50" y="344" text-anchor="middle">₹3L</text>
+          <text class="lbl hi" x="412" y="66" text-anchor="end">₹5Cr</text>
+        </g>
+      </svg>
     </div>
   </section>
 
