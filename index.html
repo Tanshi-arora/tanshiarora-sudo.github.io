@@ -26,6 +26,16 @@
     background:transparent; color:var(--ink); line-height:1.6;
     -webkit-font-smoothing:antialiased; transition:color .3s;
   }
+  /* background ambience — 2 very subtle drifting blobs */
+  .bg-blobs{position:fixed;inset:0;z-index:-1;overflow:hidden;pointer-events:none}
+  .bg-blobs span{position:absolute;width:50vw;height:50vw;border-radius:50%;filter:blur(120px);opacity:.16;will-change:transform}
+  html[data-theme="light"] .bg-blobs span{opacity:.09}
+  .bg-blobs span:nth-child(1){background:#6b5836;top:-12%;left:-10%;animation:drift1 42s ease-in-out infinite alternate}
+  .bg-blobs span:nth-child(2){background:#3a4060;bottom:-14%;right:-10%;animation:drift2 48s ease-in-out infinite alternate}
+  @keyframes drift1{0%{transform:translate(0,0) scale(1)}100%{transform:translate(32vw,24vh) scale(1.15)}}
+  @keyframes drift2{0%{transform:translate(0,0) scale(1)}100%{transform:translate(-28vw,-20vh) scale(1.1)}}
+  @media(prefers-reduced-motion:reduce){.bg-blobs span{animation:none}}
+
   .wrap{max-width:1280px;margin:0 auto;padding:0 40px}
   h1,h2,h3{font-family:'Fraunces',Georgia,serif;font-weight:500;line-height:1.1;letter-spacing:-.01em}
   a{color:inherit}
@@ -144,6 +154,7 @@
 </style>
 </head>
 <body>
+<div class="bg-blobs"><span></span><span></span></div>
 <nav><div class="wrap nav-in">
   <span class="brand">Tanshi Arora<span class="dot">.</span></span>
   <div class="nav-links">
